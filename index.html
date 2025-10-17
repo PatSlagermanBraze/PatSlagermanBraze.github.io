@@ -104,7 +104,7 @@
   braze.subscribeToBannersUpdates((banners) => {
   // Get this placement's banner. If it's `null`, the user did not qualify for any banners.
   const globalBanner = braze.getBanner("global_banner");
-  
+
   if (!globalBanner) {
     return;
   }
@@ -118,7 +118,7 @@
   }
 });
 
-  braze.requestBannersRefresh(["global_banner", "navigation_square_banner"]);
+  braze.requestBannersRefresh(["global_banner"]);
 
 braze.openSession();
 
