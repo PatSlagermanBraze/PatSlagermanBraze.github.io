@@ -337,9 +337,8 @@ braze.openSession();
   const container = document.getElementById("global-banner-container");
   if (!globalBanner) {
     container.style.display = "none";
-    return;
   }
- 
+  else {
  
  
   braze.insertBanner(globalBanner, container);
@@ -348,6 +347,7 @@ braze.openSession();
     // Hide or collapse the container
     container.style.display = "none";
   }
+}
 });
 </script>
 
