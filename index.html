@@ -97,18 +97,21 @@
     allowUserSuppliedJavascript: true
   });
 
-  braze.automaticallyShowInAppMessages();
-  braze.subscribeToContentCardsUpdates(function(cards){
-    // cards have been updated
-});
+   braze.automaticallyShowInAppMessages();
+   braze.subscribeToContentCardsUpdates(function(cards){ 
+    //cards have been updated 
+  
+  });
+    
+
   braze.subscribeToBannersUpdates((banners) => {
   // Get this placement's banner. If it's `null`, the user did not qualify for any banners.
   const globalBanner = braze.getBanner("global_banner");
-
+  const container = document.getElementById("global-banner-container");
   if (!globalBanner) {
+      container.style.display = "none";
     return;
   }
-  const container = document.getElementById("global-banner-container");
  
   braze.insertBanner(globalBanner, container);
  
@@ -118,7 +121,7 @@
   }
 });
 
-  braze.requestBannersRefresh(["global_banner"]);
+braze.requestBannersRefresh(["global_banner"]);
 
 braze.openSession();
 
