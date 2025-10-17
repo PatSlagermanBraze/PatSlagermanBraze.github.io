@@ -239,7 +239,7 @@ function purchases()
 var api_response;
 
 document.getElementById("test_button").addEventListener("click", function(){
-appboy.requestImmediateDataFlush()
+braze.requestImmediateDataFlush()
 
   var settings = {
   "async": true,
