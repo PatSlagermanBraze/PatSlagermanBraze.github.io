@@ -97,25 +97,6 @@
     allowUserSuppliedJavascript: true
   });
 
-  braze.subscribeToBannersUpdates((banners) => {
-  // Get this placement's banner. If it's `null`, the user did not qualify for any banners.
-  const globalBanner = braze.getBanner("global_banner");
-  if (!globalBanner) {
-    return;
-  }
- 
-  const container = document.getElementById("global-banner-container");
- 
-  braze.insertBanner(globalBanner, container);
- 
-  if (globalBanner.isControl) {
-    // Hide or collapse the container
-    container.style.display = "none";
-  }
-});
- 
-braze.requestBannersRefresh(["global_banner", "navigation_square_banner"]);
-
   braze.automaticallyShowInAppMessages();
   braze.subscribeToContentCardsUpdates(function(cards){
     // cards have been updated
@@ -132,7 +113,7 @@ braze.openSession();
   <div id="global-banner-container" style="width: 100%; height: 450px;"></div>
 
   <h1>Braze Web SDK Tutorial Site</h1>
-  <h3>A Seth Tilliss Production</h3>
+  <h3>Pat's test website</h3>
 
   <br />
 
@@ -348,6 +329,26 @@ braze.openSession();
     <h1>Your Personalized Feed</h1>
     <div id="feed"></div>
 </nav>
+
+<script>
+    braze.subscribeToBannersUpdates((banners) => {
+  // Get this placement's banner. If it's `null`, the user did not qualify for any banners.
+  const globalBanner = braze.getBanner("global_banner");
+  if (!globalBanner) {
+    container.style.display = "none";
+    return;
+  }
+ 
+  const container = document.getElementById("global-banner-container");
+ 
+  braze.insertBanner(globalBanner, container);
+ 
+  if (globalBanner.isControl) {
+    // Hide or collapse the container
+    container.style.display = "none";
+  }
+});
+</script>
 
 <script> 
    const toggle = document.getElementById("toggle");
