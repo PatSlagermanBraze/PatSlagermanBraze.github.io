@@ -101,6 +101,26 @@
   braze.subscribeToContentCardsUpdates(function(cards){
     // cards have been updated
 });
+  braze.subscribeToBannersUpdates((banners) => {
+  // Get this placement's banner. If it's `null`, the user did not qualify for any banners.
+  const globalBanner = braze.getBanner("global_banner");
+  const container = document.getElementById("global-banner-container");
+  if (!globalBanner) {
+    container.style.display = "none";
+    return;
+  }
+ 
+ 
+  braze.insertBanner(globalBanner, container);
+ 
+  if (globalBanner.isControl) {
+    // Hide or collapse the container
+    container.style.display = "none";
+  }
+});
+
+  braze.requestBannersRefresh(["global_banner", "navigation_square_banner"]);
+
 braze.openSession();
 
 </script>
